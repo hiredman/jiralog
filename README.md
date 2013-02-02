@@ -5,32 +5,36 @@ programs
 
 ## Usage
 
+    [com.thelastcitadel/jiralog "0.0.1"]
+
 The main thing jiralog adds is the `com.thelastcitadel.jiralog/jira`
 relation, which allows you to preform datalog style search via
 unification against the JIRA API:
 
-    (defn example []
-      (logic/run* [q]
-        (logic/fresh [status k n url components c summary]
-          (logic/== q {:name k
-                       :story n
-                       :status status
-                       :component c
-                       :summary summary})
-          (jira {:fields {:assignee {:displayName k} :labels ["some-label"]}})
-          (c/string-containsc summary "Some Thing About Whatever")
-          (jira {:fields {:assignee {:displayName k}
-                          :status {:name status}
-                          :components components
-                          :summary summary}
-                 :self url
-                 :key n})
-          (logic/conde
-           [(logic/== status "Open")]
-           [(logic/== status "Needs Review")])
-          (logic/fresh [x]
-            (logic/membero x components)
-            (logic/featurec x {:name c})))))
+```clojure
+(defn example []
+  (logic/run* [q]
+    (logic/fresh [status k n url components c summary]
+      (logic/== q {:name k
+                   :story n
+                   :status status
+                   :component c
+                   :summary summary})
+      (jira {:fields {:assignee {:displayName k} :labels ["some-label"]}})
+      (c/string-containsc summary "Some Thing About Whatever")
+      (jira {:fields {:assignee {:displayName k}
+                      :status {:name status}
+                      :components components
+                      :summary summary}
+             :self url
+             :key n})
+      (logic/conde
+       [(logic/== status "Open")]
+       [(logic/== status "Needs Review")])
+      (logic/fresh [x]
+        (logic/membero x components)
+        (logic/featurec x {:name c})))))
+```
 
 The "unification" isn't real unification. For maps it allows for
 partial matches, the search succeeds if at minimum the maps JIRA
