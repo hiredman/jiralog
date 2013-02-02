@@ -1,6 +1,6 @@
 (defproject com.thelastictadel/jiralog "0.1.0-SNAPSHOT"
   :description "search jira, why would you want to?"
-  :url "http://example.com/FIXME"
+  :url "http://github.com/hiredman/jiralog"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
