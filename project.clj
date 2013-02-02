@@ -7,5 +7,4 @@
                  [clj-http "0.6.3"]
                  [cheshire "5.0.1"]
                  [org.clojure/core.logic "0.8.0-rc2"]
-                 [sonian/carica "1.0.2"]]
-  :plugins [[lein-swank "1.4.5"]])
+                 [sonian/carica "1.0.2"]])
