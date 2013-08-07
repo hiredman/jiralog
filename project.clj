@@ -1,4 +1,4 @@
-(defproject com.thelastictadel/jiralog "1.0.0-SNAPSHOT"
+(defproject com.thelastcitadel/jiralog "1.0.0-SNAPSHOT"
   :description "search jira, why would you want to?"
   :url "http://github.com/hiredman/jiralog"
   :license {:name "Eclipse Public License"
